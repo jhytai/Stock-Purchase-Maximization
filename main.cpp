@@ -117,13 +117,13 @@ int     exhaustiveSearchUtil(int M, vector<pair<int, int>>& items,
 
 
 
-// ==== exhaustiveSearch ==================================================
+// ==== exhaustiveSearch ======================================================
 //
 // Exhaustive search function implementation
 //
 // ============================================================================
 
-int exhaustiveSearch(int M, vector<pair<int, int>>& items)
+int     exhaustiveSearch(int M, vector<pair<int, int>>& items)
 {
     vector<bool> selection(items.size(), false);
 
@@ -139,7 +139,7 @@ int exhaustiveSearch(int M, vector<pair<int, int>>& items)
 //
 // ============================================================================
 
-int dynamicProgramming(int M, vector<pair<int, int>>& items)
+int     dynamicProgramming(int M, vector<pair<int, int>>& items)
 {
     vector<vector<int>> dp(items.size() + 1, vector<int>(M + 1, 0));
 
@@ -149,7 +149,8 @@ int dynamicProgramming(int M, vector<pair<int, int>>& items)
             {
             if (items[i - 1].second <= w)
                 {
-                dp[i][w] = max(dp[i - 1][w], items[i - 1].first + dp[i - 1][w - items[i - 1].second]);
+                dp[i][w] = max(dp[i - 1][w], items[i - 1].first
+                               + dp[i - 1][w - items[i - 1].second]);
                 }
             else
                 {
@@ -166,6 +167,17 @@ int dynamicProgramming(int M, vector<pair<int, int>>& items)
 
 // ==== printTimeTaken ========================================================
 //
+// Function to print the time taken by the algorithm in micro-seconds
+//
 // ============================================================================
 
+void printTimeTaken(high_resolution_clock::time_point start)
+{
+    high_resolution_clock::time_point end = high_resolution_clock::now();
+    duration<double, micro> time_taken = duration_cast<duration<double>>(end -
+                                                                        start);
 
+    cout << "Time taken by selected algorithm: " << time_taken.count()
+         << " microseconds." << endl;
+
+}  // end of "printTimeTaken"
