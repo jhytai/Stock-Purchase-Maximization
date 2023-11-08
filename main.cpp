@@ -28,44 +28,58 @@ int     main()
 {
     int N;
     int M;
+    int option;
 
-    cout << "\n# Stock Purchase Maximation Problem Solver #\n\n";
+    cout << "\n# Stock Purchase Maximation Problem Solver #\n";
 
-    // Get from the user number of companies N
-    cout << "Enter the number of companies: ";
-    cin >> N;
+    do {
+        // Get from the user number of companies N
+        cout << "\nEnter the number of companies: ";
+        cin >> N;
 
-    // Get from the user amount of stocks and their total value (s, v)
-    vector<pair<int, int>>  stocks_and_values(N);
-    cout << "Enter the quantity of stocks and their total value for"
-         << " each company (i.e. 3 2): " << endl;
-    for (int i = 0; i < N; ++i)
-        {
-        cin >> stocks_and_values[i].first >> stocks_and_values[i].second;
-        }
+        // Get from the user amount of stocks and their total value (s, v)
+        vector<pair<int, int>>  stocks_and_values(N);
+        cout << "Enter the quantity of stocks and their total value for"
+            << " each company (i.e. 3 2): " << endl;
+        for (int i = 0; i < N; ++i)
+            {
+            cin >> stocks_and_values[i].first >> stocks_and_values[i].second;
+            }
 
-    // Get from the user the amount available for investment
-    cout << "Enter the amount available for investment: ";
-    cin >> M;
+        // Get from the user the amount available for investment
+        cout << "Enter the amount available for investment: ";
+        cin >> M;
 
-    // Execute Exhaustive Search approach
-    int maxStocks = 0;
-    high_resolution_clock::time_point start = high_resolution_clock::now();
-    maxStocks = exhaustiveSearch(M, stocks_and_values);
-    cout << "\nExhaustive Search approach." << endl;
-    cout << "Time complexity: O(2^n)" << endl;
-    printTimeTaken(start);
-    cout << "Maximum number of stocks: " << maxStocks << endl;
+        // Execute Exhaustive Search approach
+        int maxStocks = 0;
+        high_resolution_clock::time_point start = high_resolution_clock::now();
+        maxStocks = exhaustiveSearch(M, stocks_and_values);
+        cout << "\nExhaustive Search approach." << endl;
+        cout << "Time complexity: O(2^n)" << endl;
+        printTimeTaken(start);
+        cout << "Maximum number of stocks: " << maxStocks << endl;
 
-    // Execute Dynamic Programming approach
-    maxStocks = 0;
-    start = high_resolution_clock::now();
-    maxStocks = dynamicProgramming(M, stocks_and_values);
-    cout << "\nDynamic Programming approach." << endl;
-    cout << "Time complexity: O(n*M) where M is the amount available"
-            << " for investment" << endl;
-    printTimeTaken(start);
-    cout << "Maximum number of stocks: " << maxStocks << endl << endl;
+        // Execute Dynamic Programming approach
+        maxStocks = 0;
+        start = high_resolution_clock::now();
+        maxStocks = dynamicProgramming(M, stocks_and_values);
+        cout << "\nDynamic Programming approach." << endl;
+        cout << "Time complexity: O(n*M) where M is the amount available"
+                << " for investment" << endl;
+        printTimeTaken(start);
+        cout << "Maximum number of stocks: " << maxStocks << endl << endl;
+
+        // Ask if user wants to try again
+        cout << "Do you want to solve another problem? [1] Yes / [0] No: ";
+        cin >> option;
+        if (option != 1)
+            {
+            break;
+            }
+
+    } while (true);
+
+    cout << "\nProgram ended...\n\n";
 
     return 0;
 
