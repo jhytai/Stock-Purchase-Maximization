@@ -13,6 +13,8 @@ int     totalValue(const vector<pair<int, int>>& items,
                    const vector<bool>& selection);
 int     totalStocks(const vector<pair<int, int>>& items,
                     const vector<bool>& selection);
+int     exhaustiveSearchUtil(int M, vector<pair<int, int>>& items,
+                             vector<bool>& selection, int index);
 int     exhaustiveSearch(int M, vector<pair<int, int>> &items);
 int     dynamicProgramming(int M, vector<pair<int, int>> &items);
 void    printTimeTaken(high_resolution_clock::time_point start);
@@ -83,9 +85,9 @@ int     totalStocks(const vector<pair<int, int>>& items,
 
 
 
-// ==== exhaustiveSearch ======================================================
+// ==== exhaustiveSearchUtil ==================================================
 //
-// Exhaustive search implementation
+// Exhaustive search recursive call implementation
 //
 // ============================================================================
 
@@ -110,6 +112,22 @@ int     exhaustiveSearchUtil(int M, vector<pair<int, int>>& items,
     int withoutItem = exhaustiveSearchUtil(M, items, selection, index + 1);
 
     return max(withItem, withoutItem);
+
+}  // end of "exhaustiveSearchUtil"
+
+
+
+// ==== exhaustiveSearch ==================================================
+//
+// Exhaustive search function implementation
+//
+// ============================================================================
+
+int exhaustiveSearch(int M, vector<pair<int, int>>& items)
+{
+    vector<bool> selection(items.size(), false);
+
+    return exhaustiveSearchUtil(M, items, selection, 0);
 
 }  // end of "exhaustiveSearch"
 
