@@ -30,7 +30,7 @@ int     main()
     int M;
     int option;
 
-    cout << "\nStock Purchase Maximation Problem Solver\n";
+    cout << "\n# Stock Purchase Maximation Problem Solver #\n\n";
 
     // Get from the user number of companies N
     cout << "Enter the number of companies: ";
@@ -38,20 +38,21 @@ int     main()
 
     // Get from the user amount of stocks and their total value (s, v)
     vector<pair<int, int>>  stocks_and_values(N);
-    cout << "Enter the amount of stocks and their total value for each company"
-         << " (i.e. 3 2): " << endl;
+    cout << "Enter the quantity of stocks and their total value for"
+         << " each company (i.e. 3 2): " << endl;
     for (int i = 0; i < N; ++i)
         {
         cin >> stocks_and_values[i].first >> stocks_and_values[i].second;
         }
 
-    // Get from the user 
-    cout << "Enter the total amount available for investment: ";
+    // Get from the user the amount available for investment
+    cout << "Enter the amount available for investment: ";
     cin >> M;
 
-    cout << "Select the algorithm approach:\n"
+    cout << "\nSelect the algorithm approach:\n"
          << "1) Exhaustive Search\n"
-         << "2) Dynamic Programming\n";
+         << "2) Dynamic Programming\n"
+         << ">> ";
     cin >> option;
 
     int maxStocks = 0;
@@ -60,23 +61,25 @@ int     main()
     if (option == 1)
         {
         maxStocks = exhaustiveSearch(M, stocks_and_values);
-        cout << "Exhaustive Search selected." << endl;
+        cout << "\nExhaustive Search selected." << endl;
         cout << "Time complexity: O(2^n)" << endl;
         }
     else if (option == 2)
         {
         maxStocks = dynamicProgramming(M, stocks_and_values);
-        cout << "Dynamic Programming selected." << endl;
-        cout << "Time complexity: O(n*M)" << endl;
+        cout << "\nDynamic Programming selected." << endl;
+        cout << "Time complexity: O(n*M) where M is the amount available"
+             << " for investment" << endl;
         }
     else
         {
-        cout << "Invalid option selected. Exiting program." << endl;
+        cout << "\nInvalid option selected.\n"
+             << "Exiting program.\n";
         return 0;
         }
 
     printTimeTaken(start);
-    cout << "Maximum number of stocks: " << maxStocks << endl;
+    cout << "\nMaximum number of stocks: " << maxStocks << endl << endl;
 
     return 0;
 
