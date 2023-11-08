@@ -28,7 +28,6 @@ int     main()
 {
     int N;
     int M;
-    int option;
 
     cout << "\n# Stock Purchase Maximation Problem Solver #\n\n";
 
@@ -49,37 +48,24 @@ int     main()
     cout << "Enter the amount available for investment: ";
     cin >> M;
 
-    cout << "\nSelect the algorithm approach:\n"
-         << "1) Exhaustive Search\n"
-         << "2) Dynamic Programming\n"
-         << ">> ";
-    cin >> option;
-
+    // Execute Exhaustive Search approach
     int maxStocks = 0;
     high_resolution_clock::time_point start = high_resolution_clock::now();
-
-    if (option == 1)
-        {
-        maxStocks = exhaustiveSearch(M, stocks_and_values);
-        cout << "\nExhaustive Search selected." << endl;
-        cout << "Time complexity: O(2^n)" << endl;
-        }
-    else if (option == 2)
-        {
-        maxStocks = dynamicProgramming(M, stocks_and_values);
-        cout << "\nDynamic Programming selected." << endl;
-        cout << "Time complexity: O(n*M) where M is the amount available"
-             << " for investment" << endl;
-        }
-    else
-        {
-        cout << "\nInvalid option selected.\n"
-             << "Exiting program.\n";
-        return 0;
-        }
-
+    maxStocks = exhaustiveSearch(M, stocks_and_values);
+    cout << "\nExhaustive Search approach." << endl;
+    cout << "Time complexity: O(2^n)" << endl;
     printTimeTaken(start);
-    cout << "\nMaximum number of stocks: " << maxStocks << endl << endl;
+    cout << "Maximum number of stocks: " << maxStocks << endl;
+
+    // Execute Dynamic Programming approach
+    maxStocks = 0;
+    start = high_resolution_clock::now();
+    maxStocks = dynamicProgramming(M, stocks_and_values);
+    cout << "\nDynamic Programming approach." << endl;
+    cout << "Time complexity: O(n*M) where M is the amount available"
+            << " for investment" << endl;
+    printTimeTaken(start);
+    cout << "Maximum number of stocks: " << maxStocks << endl << endl;
 
     return 0;
 
