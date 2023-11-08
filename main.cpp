@@ -135,7 +135,32 @@ int exhaustiveSearch(int M, vector<pair<int, int>>& items)
 
 // ==== dynamicProgramming ====================================================
 //
+// Dynamic programming function implementation
+//
 // ============================================================================
+
+int dynamicProgramming(int M, vector<pair<int, int>>& items)
+{
+    vector<vector<int>> dp(items.size() + 1, vector<int>(M + 1, 0));
+
+    for (int i = 1; i <= items.size(); i++)
+        {
+        for (int w = 1; w <= M; w++)
+            {
+            if (items[i - 1].second <= w)
+                {
+                dp[i][w] = max(dp[i - 1][w], items[i - 1].first + dp[i - 1][w - items[i - 1].second]);
+                }
+            else
+                {
+                dp[i][w] = dp[i - 1][w];
+                }
+            }
+        }
+
+    return dp[items.size()][M];
+
+}  // end of "dynamicProgramming"
 
 
 
