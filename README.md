@@ -29,15 +29,20 @@ My submission for CPSC 335 - Project 2: Exhaustive vs Dynamic Programming
 * An 'input.txt' file is provided with 10 sample cases, and the respective 'output.txt' and 'console_log.txt' for running the program with this sample 'input.txt' file.
     - Sample case input:
 
+
 4
 [[1,2],[4,3],[3,6],[6,7]]
 12
 
+
     - Sample case output:
+
 
 11
 
+
     - Console log output for this case:
+
 
 Number of companies, N = 4
 Quantity of stocks (s) and their total value (v) for each company:
