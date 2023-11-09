@@ -19,4 +19,6 @@ My submission for CPSC 335 - Project 2: Exhaustive vs Dynamic Programming
     - Also your compiler should support C++11 or newer standard
 * To run the executable file from a Linux terminal, use the command
     - $./StockPurchaseMaximization
-
+* The console log output is being redirected to a console_log.txt file.
+* The program reads input from a input.txt file.
+* The output results are saved in a output.txt file.
