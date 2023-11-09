@@ -88,8 +88,7 @@ int     main()
             ss = stringstream(tempStr);
 
             cout << "Quantity of stocks (s) and their total value (v) for"
-                 << " each company:" << endl << line << " => "
-                 << tempStr << endl;
+                 << " each company:\n" << tempStr << endl;
 
             for (int i = 0; i < N; ++i)
                 {
