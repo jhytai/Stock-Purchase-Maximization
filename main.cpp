@@ -229,7 +229,7 @@ void printTimeTaken(high_resolution_clock::time_point start)
     duration<double, micro> time_taken = duration_cast<duration<double>>(end -
                                                                         start);
 
-    cout << "Time taken by selected algorithm: " << time_taken.count()
+    cout << "Time taken by the algorithm: " << time_taken.count()
          << " microseconds." << endl;
 
 }  // end of "printTimeTaken"
