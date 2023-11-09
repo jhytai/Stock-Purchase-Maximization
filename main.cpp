@@ -5,10 +5,15 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include <fstream>
+#include <sstream>
+#include <cctype>
+#include <string>
 using namespace std;
 using namespace std::chrono;
 
 // Function prototypes
+string  getNumbersFromString(string &str);
 int     totalValue(const vector<pair<int, int>>& items,
                    const vector<bool>& selection);
 int     totalStocks(const vector<pair<int, int>>& items,
@@ -26,64 +31,158 @@ void    printTimeTaken(high_resolution_clock::time_point start);
 
 int     main()
 {
-    int N;
-    int M;
-    int option;
+    int             N;
+    int             M;
+    ifstream        fin;
+    ofstream        fout;
+    string          line;
+    stringstream    ss;
+    int             caseLineCount = 0;
+
+    vector<pair<int, int>>  stocks_and_values(N);
 
     cout << "\n# Stock Purchase Maximation Problem Solver #\n";
 
-    do {
-        // Get from the user number of companies N
-        cout << "\nEnter the number of companies: ";
-        cin >> N;
+    // Check if input.txt file is readable
+    fin.open("input.txt");
+    if (fin.fail())
+        {
+        fout.open("output.txt");
+        fout << "Error: Unable to open 'input.txt' file for reading...\n";
+        fout.close();
 
-        // Get from the user amount of stocks and their total value (s, v)
-        vector<pair<int, int>>  stocks_and_values(N);
-        cout << "Enter the quantity of stocks and their total value for"
-            << " each company (i.e. 3 2): " << endl;
-        for (int i = 0; i < N; ++i)
+        cout << "\nError: Unable to open 'input.txt' file for reading...\n";
+        cout << "Program ended.\n\n";
+
+        return 0;
+        }
+
+    // Open output.txt file for writing
+    fout.open("output.txt");
+
+    while (getline(fin, line))
+        {
+        ++caseLineCount;
+
+        // Get number of companies, N
+        if (caseLineCount == 1 && isdigit(line.at(0)))
             {
-            cin >> stocks_and_values[i].first >> stocks_and_values[i].second;
+            ss = stringstream(line);
+            ss >> N;
+            cout << "\nNumber of companies, N = " << N << endl;
+
+            if (N < 0 || N > 100000)
+                {
+                fout << "Error: Constraint violated (0 <= N <= 100000)\n";
+                cout << "\nError: Constraint violated (0 <= N <= 100000)\n";
+                cout << "Program ended.\n\n";
+                return 0;
+                }
             }
 
-        // Get from the user the amount available for investment
-        cout << "Enter the amount available for investment: ";
-        cin >> M;
-
-        // Execute Exhaustive Search approach
-        int maxStocks = 0;
-        high_resolution_clock::time_point start = high_resolution_clock::now();
-        maxStocks = exhaustiveSearch(M, stocks_and_values);
-        cout << "\n  Exhaustive Search approach." << endl;
-        cout << "  Time complexity: O(2^n)" << endl;
-        printTimeTaken(start);
-        cout << "  Maximum number of stocks: " << maxStocks << endl;
-
-        // Execute Dynamic Programming approach
-        maxStocks = 0;
-        start = high_resolution_clock::now();
-        maxStocks = dynamicProgramming(M, stocks_and_values);
-        cout << "\n  Dynamic Programming approach." << endl;
-        cout << "  Time complexity: O(n*M) where M is the amount available"
-                << " for investment" << endl;
-        printTimeTaken(start);
-        cout << "  Maximum number of stocks: " << maxStocks << endl << endl;
-
-        // Ask if user wants to try again
-        cout << "Do you want to solve another problem? [1] Yes / [0] No: ";
-        cin >> option;
-        if (option != 1)
+        // Get amount of stocks and their total value [si,vi]
+        else if (caseLineCount == 2 && line.at(0) == '[')
             {
-            break;
+            string  tempStr = getNumbersFromString(line);
+            stocks_and_values.resize(N);
+            ss = stringstream(tempStr);
+
+            cout << "Quantity of stocks (s) and their total value (v) for"
+                 << " each company:" << endl << line << " => "
+                 << tempStr << endl;
+
+            for (int i = 0; i < N; ++i)
+                {
+                ss >> stocks_and_values[i].first >> stocks_and_values[i].second;
+
+                if (stocks_and_values[i].first <= 0 ||
+                    stocks_and_values[i].second <= 0)
+                    {
+                    fout << "Error: Constraint violated (s,v > 0)\n";
+                    cout << "\nError: Constraint violated (s,v > 0)\n";
+                    cout << "Program ended.\n\n";
+                    return 0;
+                    }
+                }
             }
 
-    } while (true);
+        // Get the amount available for investment, M
+        else if (caseLineCount == 3 && isdigit(line.at(0)))
+            {
+            ss = stringstream(line);
+            ss >> M;
+            cout << "Amount available for investment, M = " << M << endl;
 
+            // Execute Exhaustive Search approach
+            int maxStocks = 0;
+            high_resolution_clock::time_point start = high_resolution_clock::now();
+            maxStocks = exhaustiveSearch(M, stocks_and_values);
+            cout << "\n  Exhaustive Search approach." << endl;
+            cout << "  Time complexity: O(2^n)" << endl;
+            printTimeTaken(start);
+            cout << "  Maximum number of stocks: " << maxStocks << endl;
+
+            // Execute Dynamic Programming approach
+            maxStocks = 0;
+            start = high_resolution_clock::now();
+            maxStocks = dynamicProgramming(M, stocks_and_values);
+            cout << "\n  Dynamic Programming approach." << endl;
+            cout << "  Time complexity: O(n*M) where M is the amount available"
+                    << " for investment" << endl;
+            printTimeTaken(start);
+            cout << "  Maximum number of stocks: " << maxStocks << endl << endl;
+
+            // Write result to output.txt
+            fout << maxStocks << endl << endl;
+            }
+
+        // Reset for next case
+        else if (caseLineCount == 4 && line.empty())
+            {
+            caseLineCount = 0;
+            stocks_and_values.resize(0);
+            }
+
+        else
+            {
+            fout << "Error: Invalid input...\n";
+            cout << "\nError: Invalid input...\n";
+            cout << "Program ended.\n\n";
+            return 0;
+            }
+        }
+
+    fin.close();
+    fout.close();
     cout << "\nProgram ended...\n\n";
 
     return 0;
 
 }  // end of "main"
+
+
+
+// ==== getNumbersFromString ==================================================
+//
+// Helper function to extract only numbers from a string
+//
+// ============================================================================
+
+string  getNumbersFromString(string &str)
+{
+    string  numbersStr = str;
+
+    for (int i = 0; i < numbersStr.length(); ++i)
+        {
+        if (isdigit(str.at(i)) == false)
+            {
+            numbersStr.replace(i, 1, " ");
+            }
+        }
+
+    return numbersStr;
+
+}  // end of "getNumbersFromString"
 
 
 
@@ -226,8 +325,7 @@ int     dynamicProgramming(int M, vector<pair<int, int>>& items)
 void printTimeTaken(high_resolution_clock::time_point start)
 {
     high_resolution_clock::time_point end = high_resolution_clock::now();
-    duration<double, micro> time_taken = duration_cast<duration<double>>(end -
-                                                                        start);
+    duration<double, micro> time_taken = duration_cast<duration<double>>(end - start);
 
     cout << "  Time taken by the algorithm: " << time_taken.count()
          << " microseconds." << endl;
