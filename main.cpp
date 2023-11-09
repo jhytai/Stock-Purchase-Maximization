@@ -31,8 +31,9 @@ void    printTimeTaken(high_resolution_clock::time_point start);
 
 int     main()
 {
-    int             N;
-    int             M;
+    int             N = 0;
+    int             M = 0;
+    int             maxStocks = 0;
     ifstream        fin;
     ofstream        fout;
     ofstream        console_out;
@@ -41,10 +42,11 @@ int     main()
     int             caseLineCount = 0;
 
     vector<pair<int, int>>  stocks_and_values(N);
+    high_resolution_clock::time_point   start;
 
     // Redirect console log output to console_log.txt file
     console_out.open("console_log.txt");
-    auto prevcoutbuf = std::cout.rdbuf();
+    auto prevcoutbuf = cout.rdbuf();
     cout.rdbuf(console_out.rdbuf());
 
     cout << "\n# Stock Purchase Maximation Problem Solver #\n";
@@ -90,6 +92,7 @@ int     main()
         else if (caseLineCount == 2 && line.at(0) == '[')
             {
             string  tempStr = getNumbersFromString(line);
+
             stocks_and_values.resize(N);
             ss = stringstream(tempStr);
 
@@ -98,7 +101,8 @@ int     main()
 
             for (int i = 0; i < N; ++i)
                 {
-                ss >> stocks_and_values[i].first >> stocks_and_values[i].second;
+                ss >> stocks_and_values[i].first
+                   >> stocks_and_values[i].second;
 
                 if (stocks_and_values[i].first <= 0 ||
                     stocks_and_values[i].second <= 0)
@@ -119,8 +123,8 @@ int     main()
             cout << "Amount available for investment, M = " << M << endl;
 
             // Execute Exhaustive Search approach
-            int maxStocks = 0;
-            high_resolution_clock::time_point start = high_resolution_clock::now();
+            maxStocks = 0;
+            start = high_resolution_clock::now();
             maxStocks = exhaustiveSearch(M, stocks_and_values);
             cout << "\n  Exhaustive Search approach." << endl;
             cout << "  Time complexity: O(2^n)" << endl;
@@ -133,9 +137,10 @@ int     main()
             maxStocks = dynamicProgramming(M, stocks_and_values);
             cout << "\n  Dynamic Programming approach." << endl;
             cout << "  Time complexity: O(n*M) where M is the amount available"
-                    << " for investment" << endl;
+                 << " for investment" << endl;
             printTimeTaken(start);
-            cout << "  Maximum number of stocks: " << maxStocks << endl << endl;
+            cout << "  Maximum number of stocks: " << maxStocks
+                 << endl << endl;
 
             // Write result to output.txt
             fout << maxStocks << endl << endl;
@@ -163,7 +168,8 @@ int     main()
 
     cout.rdbuf(prevcoutbuf);
     console_out.close();
-    cout << "\nProgram executed and console log saved in console_log.txt file.\n\n";
+    cout << "\nProgram executed and console log saved in console_log.txt"
+         << " file.\n\n";
 
     return 0;
 
@@ -334,7 +340,8 @@ int     dynamicProgramming(int M, vector<pair<int, int>>& items)
 void printTimeTaken(high_resolution_clock::time_point start)
 {
     high_resolution_clock::time_point end = high_resolution_clock::now();
-    duration<double, micro> time_taken = duration_cast<duration<double>>(end - start);
+    duration<double, micro> time_taken = duration_cast<duration<double>>(
+        end - start);
 
     cout << "  Time taken by the algorithm: " << time_taken.count()
          << " microseconds." << endl;

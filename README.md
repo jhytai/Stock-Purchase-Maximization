@@ -21,4 +21,11 @@ My submission for CPSC 335 - Project 2: Exhaustive vs Dynamic Programming
     - $./StockPurchaseMaximization
 * The console log output is being redirected to a console_log.txt file.
 * The program reads input from a input.txt file.
+    - Each case is represented by 3 lines, and a newline should separate each case.
+    - In each case, the first line represents the number of companies (N), the second line represents quantity of stocks and their total value as a pair of values (s,v) using the notation of an array of arrays, the third line represents the amount available for investment (M).
+    - Only integer values are accepted.
 * The output results are saved in a output.txt file.
+    - The output for each case is represented by one single line containing the max amount of stocks that is possible to purchase on each case. And a newline separates each case.
+* An 'input.txt' file is provided with 10 sample cases, and the respective 'output.txt' and 'console_log.txt' for running the program with this sample 'input.txt' file.
+    - Sample case input:
+    - Expected sample case output:

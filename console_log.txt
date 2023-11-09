@@ -8,12 +8,12 @@ Amount available for investment, M = 12
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 25 microseconds.
+  Time taken by the algorithm: 38 microseconds.
   Maximum number of stocks: 11
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 12 microseconds.
+  Time taken by the algorithm: 18.1 microseconds.
   Maximum number of stocks: 11
 
 
@@ -24,12 +24,12 @@ Amount available for investment, M = 10
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 22.2 microseconds.
+  Time taken by the algorithm: 35.7 microseconds.
   Maximum number of stocks: 12
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 10.1 microseconds.
+  Time taken by the algorithm: 18.1 microseconds.
   Maximum number of stocks: 12
 
 
@@ -40,12 +40,12 @@ Amount available for investment, M = 6
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 7.8 microseconds.
+  Time taken by the algorithm: 9.8 microseconds.
   Maximum number of stocks: 3
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 8 microseconds.
+  Time taken by the algorithm: 9.5 microseconds.
   Maximum number of stocks: 3
 
 
@@ -56,12 +56,12 @@ Amount available for investment, M = 6
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 9.6 microseconds.
+  Time taken by the algorithm: 9.7 microseconds.
   Maximum number of stocks: 4
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 8.4 microseconds.
+  Time taken by the algorithm: 8.9 microseconds.
   Maximum number of stocks: 4
 
 
@@ -72,12 +72,12 @@ Amount available for investment, M = 8
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 13.3 microseconds.
+  Time taken by the algorithm: 12.6 microseconds.
   Maximum number of stocks: 7
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 9.1 microseconds.
+  Time taken by the algorithm: 9.3 microseconds.
   Maximum number of stocks: 7
 
 
@@ -88,7 +88,7 @@ Amount available for investment, M = 9
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 21 microseconds.
+  Time taken by the algorithm: 21.2 microseconds.
   Maximum number of stocks: 12
 
   Dynamic Programming approach.
@@ -104,12 +104,12 @@ Amount available for investment, M = 15
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 41.9 microseconds.
+  Time taken by the algorithm: 42.6 microseconds.
   Maximum number of stocks: 18
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 14.2 microseconds.
+  Time taken by the algorithm: 11.2 microseconds.
   Maximum number of stocks: 18
 
 
@@ -120,12 +120,12 @@ Amount available for investment, M = 12
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 78 microseconds.
+  Time taken by the algorithm: 76.7 microseconds.
   Maximum number of stocks: 17
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 12.7 microseconds.
+  Time taken by the algorithm: 11.3 microseconds.
   Maximum number of stocks: 17
 
 
@@ -136,12 +136,12 @@ Amount available for investment, M = 16
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 517 microseconds.
+  Time taken by the algorithm: 411.3 microseconds.
   Maximum number of stocks: 23
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 22.9 microseconds.
+  Time taken by the algorithm: 15.1 microseconds.
   Maximum number of stocks: 23
 
 
@@ -152,12 +152,12 @@ Amount available for investment, M = 20
 
   Exhaustive Search approach.
   Time complexity: O(2^n)
-  Time taken by the algorithm: 1980.5 microseconds.
+  Time taken by the algorithm: 1929.6 microseconds.
   Maximum number of stocks: 29
 
   Dynamic Programming approach.
   Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 41.7 microseconds.
+  Time taken by the algorithm: 18.4 microseconds.
   Maximum number of stocks: 29
 
 
