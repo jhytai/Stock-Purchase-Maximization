@@ -35,11 +35,17 @@ int     main()
     int             M;
     ifstream        fin;
     ofstream        fout;
+    ofstream        console_out;
     string          line;
     stringstream    ss;
     int             caseLineCount = 0;
 
     vector<pair<int, int>>  stocks_and_values(N);
+
+    // Redirect console log output to console_log.txt file
+    console_out.open("console_log.txt");
+    auto prevcoutbuf = std::cout.rdbuf();
+    cout.rdbuf(console_out.rdbuf());
 
     cout << "\n# Stock Purchase Maximation Problem Solver #\n";
 
@@ -154,6 +160,10 @@ int     main()
     fin.close();
     fout.close();
     cout << "\nProgram ended...\n\n";
+
+    cout.rdbuf(prevcoutbuf);
+    console_out.close();
+    cout << "\nProgram executed and console log saved in console_log.txt file.\n\n";
 
     return 0;
 
