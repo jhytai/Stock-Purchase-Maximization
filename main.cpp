@@ -54,20 +54,20 @@ int     main()
         int maxStocks = 0;
         high_resolution_clock::time_point start = high_resolution_clock::now();
         maxStocks = exhaustiveSearch(M, stocks_and_values);
-        cout << "\nExhaustive Search approach." << endl;
-        cout << "Time complexity: O(2^n)" << endl;
+        cout << "\n  Exhaustive Search approach." << endl;
+        cout << "  Time complexity: O(2^n)" << endl;
         printTimeTaken(start);
-        cout << "Maximum number of stocks: " << maxStocks << endl;
+        cout << "  Maximum number of stocks: " << maxStocks << endl;
 
         // Execute Dynamic Programming approach
         maxStocks = 0;
         start = high_resolution_clock::now();
         maxStocks = dynamicProgramming(M, stocks_and_values);
-        cout << "\nDynamic Programming approach." << endl;
-        cout << "Time complexity: O(n*M) where M is the amount available"
+        cout << "\n  Dynamic Programming approach." << endl;
+        cout << "  Time complexity: O(n*M) where M is the amount available"
                 << " for investment" << endl;
         printTimeTaken(start);
-        cout << "Maximum number of stocks: " << maxStocks << endl << endl;
+        cout << "  Maximum number of stocks: " << maxStocks << endl << endl;
 
         // Ask if user wants to try again
         cout << "Do you want to solve another problem? [1] Yes / [0] No: ";
@@ -229,7 +229,7 @@ void printTimeTaken(high_resolution_clock::time_point start)
     duration<double, micro> time_taken = duration_cast<duration<double>>(end -
                                                                         start);
 
-    cout << "Time taken by the algorithm: " << time_taken.count()
+    cout << "  Time taken by the algorithm: " << time_taken.count()
          << " microseconds." << endl;
 
 }  // end of "printTimeTaken"
