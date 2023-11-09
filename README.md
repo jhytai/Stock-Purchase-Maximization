@@ -14,5 +14,9 @@ My submission for CPSC 335 - Project 2: Exhaustive vs Dynamic Programming
 
 * The programming language used is C++.
 * The executable file is already compiled to run from a Linux terminal.
-* If needed, you can recompile again from a Linux terminal by using the command $g++ main.cpp -o StockPurchaseMaximization
-* To run the executable file from a Linux terminal, use the command $./StockPurchaseMaximization
+* If needed, you can recompile again from a Linux terminal by using the command
+    - $g++ main.cpp -o StockPurchaseMaximization
+    - Also your compiler should support C++11 or newer standard
+* To run the executable file from a Linux terminal, use the command
+    - $./StockPurchaseMaximization
+
