@@ -59,3 +59,4 @@ My submission for CPSC 335 - Project 2: Exhaustive vs Dynamic Programming
     Time taken by the algorithm: 18.1 microseconds.
     Maximum number of stocks: 11
     ```
+    - In this sample case, the best combination is given by the pairs (s,v) on the indexes 0, 1 and 3. This combination maximizes the quantity of stocks purchased given the limited amount available to invest. Giving a total amount invested of 2 + 3 + 7 = 12, and a total quantity of stocks of 1 + 4 + 6 = 11.
