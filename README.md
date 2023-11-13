@@ -29,32 +29,33 @@ My submission for CPSC 335 - Project 2: Exhaustive vs Dynamic Programming
 * An 'input.txt' file is provided with 10 sample cases, and the respective 'output.txt' and 'console_log.txt' for running the program with this sample 'input.txt' file.
     - Sample case input:
 
-`code()`
-4
-[[1,2],[4,3],[3,6],[6,7]]
-12
-`code()`
+    ```bash
+    4
+    [[1,2],[4,3],[3,6],[6,7]]
+    12
+    ```
 
     - Sample case output:
 
-
-11
-
+    ```bash
+    11
+    ```
 
     - Console log output for this case:
 
+    ```bash
+    Number of companies, N = 4
+    Quantity of stocks (s) and their total value (v) for each company:
+    1 2   4 3   3 6   6 7  
+    Amount available for investment, M = 12
 
-Number of companies, N = 4
-Quantity of stocks (s) and their total value (v) for each company:
-  1 2   4 3   3 6   6 7  
-Amount available for investment, M = 12
+    Exhaustive Search approach.
+    Time complexity: O(2^n)
+    Time taken by the algorithm: 38 microseconds.
+    Maximum number of stocks: 11
 
-  Exhaustive Search approach.
-  Time complexity: O(2^n)
-  Time taken by the algorithm: 38 microseconds.
-  Maximum number of stocks: 11
-
-  Dynamic Programming approach.
-  Time complexity: O(n*M) where M is the amount available for investment
-  Time taken by the algorithm: 18.1 microseconds.
-  Maximum number of stocks: 11
+    Dynamic Programming approach.
+    Time complexity: O(n*M) where M is the amount available for investment
+    Time taken by the algorithm: 18.1 microseconds.
+    Maximum number of stocks: 11
+    ```
